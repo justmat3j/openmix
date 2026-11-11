@@ -1,0 +1,24 @@
+[package]
+name = "openmix"
+version = "0.2.0"
+edition = "2024"
+rust-version = "1.95"
+description = "A native local music player and transition mixer"
+license = "MIT"
+
+[dependencies]
+directories = "6.0.0"
+image = { version = "0.25.10", default-features = false, features = ["jpeg", "png"] }
+eframe = { version = "0.37.0", default-features = false, features = ["clipboard", "default_fonts", "glow", "system_fonts", "x11"] }
+reqwest = { version = "0.13.5", default-features = false, features = ["blocking", "json", "rustls"] }
+rfd = { version = "0.17.2", default-features = false, features = ["xdg-portal", "pollster"] }
+rodio = { version = "0.23.0", default-features = false, features = ["playback", "symphonia-mp3", "symphonia-wav"] }
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.154"
+symphonia = { version = "0.5.5", default-features = false, features = ["mp3", "wav", "pcm"] }
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+strip = true
